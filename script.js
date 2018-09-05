@@ -1,44 +1,108 @@
-const string = ["apples", "oranges", "banannas", "grapefruit", "peaches", "jackfruit"]
-
 const sentence = "car is cool"
+
+const array1 = ["7", "13", "24", "36", "48", "50"]
+
+const array2 = ["1", "3", "5", "3", "7", "3", "1", "1", "5"]
+
+const values = { a: 1, b: 7, c: 3, d: 14 };
+
 
 //kata 1
 
-var reverse = string.reverse()
-console.log(reverse)
 
-function reverseString(string) {
-    // var reverse = string.reverse()
-    return string
+
+function reverseString() {
+    var reverse = sentence.toString().split("").reverse("").join("")
+    return reverse
 }
 
-console.log(reverseString)
-console.assert(reverseString)
+console.log(reverseString())
 
-function testReverse() {
+console.assert(("car is cool", "car is cool".toString().split("").reverse("").join("")) === "looc si rac")
+console.assert(("", "".toString().split("").reverse("").join("")) === " ")
 
-    let result = reverseString("string big")
-    console.assert(result === "big string", {
-        "function": 'string.reverse()',
-        "expected": ["jackfruit", "peaches", "grapefruit", "banannas", "oranges", "apples"],
-        "result": result
-    })
-}
-
-function testReverse2() {
-
-    let result = reverseString("string big")
-    console.assert(result === "big string", {
-        "function": 'string.reverse()',
-        "expected": ["jackfruit", "peaches", "grapefruit", "banannas", "oranges", "apples"],
-        "result": result
-    })
-}
-
-testReverse()
-testReverse2()
 
 //kata 2
 
 var backwards = sentence.split(" ").reverse("").join(" ")
 console.log(backwards)
+
+console.assert(("car is cool", "car is cool".split(" ").reverse("").join(" ")) === "cool is car")
+console.assert(("", "".toString().split("").reverse("").join("")) === " ")
+
+
+//kata3
+
+var min = Math.min(...array1)
+console.log(min)
+
+console.assert((min, "7") === "7")
+console.assert((min, "7") === "0")
+
+
+
+
+//kata4
+
+var max = Math.max(...array1)
+console.log(max)
+
+console.assert((max, "50") === "50")
+console.assert((max, "50") === "0")
+
+//kata5
+
+let y = 6
+let x = 2
+var quotient = Math.floor(y / x)
+
+
+console.log(quotient)
+console.assert((quotient, "3") === "3")
+console.assert((quotient, "3") === "0")
+
+
+//kata6
+
+
+let array2unique = [...new Set(array2)]
+
+console.log(array2unique)
+console.assert((array2unique, "1, 3, 5, 7") === "1, 3, 5, 7")
+console.assert((array2unique, "1, 3, 5, 7") === "0")
+
+//kata7
+
+function getCharCount(charCount, char) {
+    charCount[char] ? charCount[char] += 1 : charCount[char] = 1;
+    return charCount;
+}
+
+let newArray = array2.reduce(getCharCount, [])
+
+for (let i = 0; i < newArray.length; i++) {
+
+    if (newArray[array2unique[i]] > 0) {
+        const answer = array2unique[i] + "(" + newArray[array2unique[i]] + ")" + " "
+        console.log(answer)
+    }
+
+}
+
+console.assert(("answer", "1(3) 3(3) 5(2) 7(1)") === "1(3) 3(3) 5(2) 7(1)")
+console.assert(("answer", "1(3) 3(3) 5(2) 7(1)") === "0")
+
+
+//kata8
+
+
+
+
+function addedNumbers(a, b, c, d) {
+    return values.a + values.b + values.c - values.d;
+}
+
+
+console.log(addedNumbers())
+console.assert(addedNumbers(addedNumbers, values) === -3);
+console.assert(addedNumbers(addedNumbers, values) === 0);
